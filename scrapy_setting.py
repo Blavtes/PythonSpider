@@ -66,3 +66,23 @@
 # cmdline.execute('scrapy crawl xiaomi -o xiaomi.json'.split())
 # settings.py 设置编码
 # FEED_EXPORT_ENCODING= 'utf-8' # 保存编码
+# 非结构化数据存储路径
+# IMAGES_STORE = '路径'
+# 并发数
+# CONCURRENT_REQUESTS= 32
+# 间隔
+# DOWNLOAD_DELAY = 3
+# 下载器中间件
+# DOWNLOADER_MIDDLEWARES = {}
+
+# response 属性
+# 1、response.text 获取响应内容-字符串
+# 2、response.body 获取bytes数据类型
+# 3、response.xpath('')
+#
+# response.xpath('')调用方法
+# 1、结果：列表，元素为选择器对象
+# <selector xpath='//article' data=''>
+# 2、.extract() : 提取文本内容，将列表中的所有元素序列化为unicode字符串
+# 3、.extract_first(): 提前列表中的第一个文本内容
+# 4、.get() : 提取列表中的第一个文本内容 # python3.5 之后可用
