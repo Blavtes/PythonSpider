@@ -86,3 +86,5 @@
 # 2、.extract() : 提取文本内容，将列表中的所有元素序列化为unicode字符串
 # 3、.extract_first(): 提前列表中的第一个文本内容
 # 4、.get() : 提取列表中的第一个文本内容 # python3.5 之后可用
+
+# 中间件设置代理、user-agent、重写pipeline
