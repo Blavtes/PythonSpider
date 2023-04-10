@@ -17,6 +17,7 @@
 # LOG_LEVEL = 'INFO'     2 一般信息
 # LOG_LEVEL = 'DEBUG'    1 调试信息
 """
+import scrapy
 # 启用管道
 # ITEM_PIPELINES = {
 #    'Bqg.pipelines.BqgPipeline': 300,
@@ -88,3 +89,33 @@
 # 4、.get() : 提取列表中的第一个文本内容 # python3.5 之后可用
 
 # 中间件设置代理、user-agent、重写pipeline
+
+# 分布式爬取数据配置 方式1、中型数据爬取
+# 1、安装pip install scrapy_redis
+# 1、使用scrapy_redis的调度器
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# 2、使用scrapy_redis的去重机制
+# DUPEFILTER_CLASS= "scrapy_redis.dupefilter.REPDupeFilter"
+# 3、是否清除请求指纹，True不清除。False清除（默认）
+# SCHEDULER_PERSIST = True
+# 4、（非必须）在ITEM_PIPELINES中添加redis管道优先级（不添加，item数据不会添加redis数据库中）
+# 'scrapy_redis.popelines.RedisPipeline' : 200
+# 5、定义redis主机地址和端口号
+# REDIS_HOST = '127.0.0.1'
+# REDIS_PORT = 6379
+
+# 方式2
+# 1、不添加redis管道
+# 2、在spider中引用
+# from scrapy_redis.spider import RedisSpider
+# 3、修改scrapy.Spider继承RedisSpider
+# class TencentSpider(RedisSpider):
+    # 去掉start_urls
+    # 定义redis_key
+    # redis_key = 'xxxx:spider'
+    # 重写
+   # def make_requsets_from_url(self,url):
+   #     return scrapy.Request(url=url,dont_filter=True) #dont_filter 跨域
+
+# 分布式运行程序后、需在redis数据库终端中执行
+   # lpush redis_key start_url

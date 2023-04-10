@@ -101,3 +101,9 @@ class TencentDownloaderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+from fake_useragent import UserAgent
+class RandomUserAngent:
+    def process_request(self, request, spider):
+        us = UserAgent().random
+        request.headers = {'User-Agent':us}

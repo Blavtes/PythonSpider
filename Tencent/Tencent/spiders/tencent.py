@@ -20,8 +20,8 @@ class TencentSpider(scrapy.Spider):
     def start_requests(self):
         # 单独获取总页数
         total = self.get_total(self.user_input)
-        print(total)
-        for index in range(1,total+1):
+        print(total) #
+        for index in range(1,1+1):
             url = self.one_url.format(self.user_input,index)
             yield scrapy.Request(
                 url=url,
